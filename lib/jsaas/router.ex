@@ -11,7 +11,7 @@ defmodule JSaaS.Router do
     include_rts: false]
 
     response = ExTwitter.user_timeline(options)
-    |> Enum.map(fn(tweet) -> tweet.text end)
+    |> Enum.map(&(&1.text))
     |> Enum.random
 
     send_resp(conn, 200, response)
