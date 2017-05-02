@@ -12,8 +12,7 @@ defmodule JSaaS.Mixfile do
 
   def application do
     [extra_applications: [:logger],
-    mod: {JSaaS.Application, []},
-    env: [cowboy_port: 8080]]
+    mod: {JSaaS.Application, []}]
   end
 
   defp deps do
