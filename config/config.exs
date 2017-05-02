@@ -1,6 +1,6 @@
 use Mix.Config
 
-config :jsaas, cowboy_port: 8080
+config :jsaas, cowboy_port: System.get_env("PORT")
 config :extwitter, :oauth, [
    consumer_key: System.get_env("consumer_key"),
    consumer_secret: System.get_env("consumer_secret"),
