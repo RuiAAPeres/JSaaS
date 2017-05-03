@@ -5,8 +5,9 @@ defmodule JSaaS.Router do
   plug :match
   plug :dispatch
 
-  def getJaden do
-    options = [screen_name: "officialjaden",
+  @spec getTweet(String.t) :: String.t
+  def getTweet(account_name) do
+    options = [screen_name: account_name,
     count: 200,
     exclude_replies: true,
     include_rts: false]
@@ -16,14 +17,14 @@ defmodule JSaaS.Router do
   end
 
   get "/hitMeJaden" do
-    response = getJaden
+    response = getTweet("officialjaden")
 
     send_resp(conn, 200, response)
   end
 
   get "/flipMeJaden" do
-    response = getJaden
-    |> String.reverse
+    response = getTweet("officialjaden")
+    |> JSaaS.MessageUtils.flipMsg
 
     send_resp(conn, 200, response)
   end

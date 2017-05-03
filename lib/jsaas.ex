@@ -16,7 +16,7 @@ defmodule JSaaS.Application do
     ]
 
     Logger.info("Here we go...")
-    Logger.info("try `localhost:8080/hitMeJaden`")
+    Logger.info("try `localhost:#{port}/hitMeJaden`")
 
     opts = [strategy: :one_for_one, name: JSaaS.Supervisor]
     Supervisor.start_link(children, opts)
