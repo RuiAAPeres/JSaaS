@@ -29,5 +29,18 @@ defmodule JSaaS.Router do
     send_resp(conn, 200, response)
   end
 
+  get "/hitMe:user" do
+    response = getTweet(user)
+
+    send_resp(conn, 200, response)
+  end
+
+  get "/flipMe:user" do
+    response = getTweet(user)
+    |> JSaaS.MessageUtils.flipMsg
+
+    send_resp(conn, 200, response)
+  end
+
   match _, do: send_resp(conn, 404, "Oops!")
 end
