@@ -1,6 +1,5 @@
 defmodule JSaaS.Router do
   use Plug.Router
-  use Poison.Encode
 
   plug :match
   plug :dispatch

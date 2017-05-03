@@ -1,5 +1,4 @@
 defmodule JSaaS.Tweet do
-  use Poison.Encode
 
   @derive [Poison.Encoder]
   defstruct message: nil
