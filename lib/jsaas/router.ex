@@ -5,15 +5,25 @@ defmodule JSaaS.Router do
   plug :match
   plug :dispatch
 
-  get "/hitMeJaden" do
-
+  def getJaden do
     options = [screen_name: "officialjaden",
     count: 200,
     exclude_replies: true,
     include_rts: false]
 
-    response = ExTwitter.user_timeline(options)
+    ExTwitter.user_timeline(options)
     |> JSaaS.Tweet.to_tweet
+  end
+
+  get "/hitMeJaden" do
+    response = getJaden
+
+    send_resp(conn, 200, response)
+  end
+
+  get "/flipMeJaden" do
+    response = getJaden
+    |> String.reverse
 
     send_resp(conn, 200, response)
   end
