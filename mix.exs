@@ -19,6 +19,7 @@ defmodule JSaaS.Mixfile do
     [{:cowboy, "~> 1.1.2"},
     {:plug, "~> 1.3.4"},
     {:extwitter, "~> 0.8.3"},
-    {:poison, "~> 2.0"}]
+    {:poison, "~> 2.0"},
+    {:dialyxir, "~> 0.5", only: [:dev], runtime: false}]
   end
 end
