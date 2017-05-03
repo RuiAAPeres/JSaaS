@@ -1,19 +1,42 @@
 defmodule JSaaS.Router do
   use Plug.Router
-  use Poison.Encode
 
   plug :match
   plug :dispatch
 
-  get "/hitMeJaden" do
-
-    options = [screen_name: "officialjaden",
+  @spec getTweet(String.t) :: String.t
+  def getTweet(account_name) do
+    options = [screen_name: account_name,
     count: 200,
     exclude_replies: true,
     include_rts: false]
 
-    response = ExTwitter.user_timeline(options)
+    ExTwitter.user_timeline(options)
     |> JSaaS.Tweet.to_tweet
+  end
+
+  get "/hitMeJaden" do
+    response = getTweet("officialjaden")
+
+    send_resp(conn, 200, response)
+  end
+
+  get "/flipMeJaden" do
+    response = getTweet("officialjaden")
+    |> JSaaS.MessageUtils.flipMsg
+
+    send_resp(conn, 200, response)
+  end
+
+  get "/hitMe:user" do
+    response = getTweet(user)
+
+    send_resp(conn, 200, response)
+  end
+
+  get "/flipMe:user" do
+    response = getTweet(user)
+    |> JSaaS.MessageUtils.flipMsg
 
     send_resp(conn, 200, response)
   end
