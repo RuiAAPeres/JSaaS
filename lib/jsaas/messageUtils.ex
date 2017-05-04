@@ -8,12 +8,12 @@ defmodule JSaaS.MessageUtils do
       "{\"message\":\"oof\"}"
   """
   @spec flipMsg(String.t) :: String.t
-  def flipMsg(json_str) do
-    json_str
-    |> Poison.decode!
-    |> Map.get("message")
+  def flipMsg(text) do
+    text
     |> String.reverse
-    |> (&%{ :message => &1 }).()
-    |> Poison.encode!
+  end
+
+  def identity(text) do
+    text
   end
 end
