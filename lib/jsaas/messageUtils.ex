@@ -3,17 +3,23 @@ defmodule JSaaS.MessageUtils do
   flip the message field of a {"message":"foo"} json
 
   # Examples:
-
-      iex> JSaaS.MessageUtils.flipMsg("{\"message\":\"foo\"}")
-      "{\"message\":\"oof\"}"
+      iex> JSaaS.MessageUtils.flip_message("a message")
+      "egassem a"
   """
-  @spec flipMsg(String.t) :: String.t
-  def flipMsg(json_str) do
-    json_str
-    |> Poison.decode!
-    |> Map.get("message")
-    |> String.reverse
-    |> (&%{ :message => &1 }).()
-    |> Poison.encode!
+  @spec flip_message(String.t) :: String.t
+  def flip_message(text) do
+    text |> String.reverse
+  end
+
+  @doc ~S"""
+  Returns itself
+
+  # Examples:
+      iex> JSaaS.MessageUtils.identity("a message")
+      "a message"
+  """
+  @spec identity(String.t) :: String.t
+  def identity(text) do
+    text
   end
 end
