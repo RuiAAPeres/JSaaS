@@ -3,12 +3,11 @@ defmodule JSaaS.MessageUtils do
   flip the message field of a {"message":"foo"} json
 
   # Examples:
-
-      iex> JSaaS.MessageUtils.flipMsg("{\"message\":\"foo\"}")
-      "{\"message\":\"oof\"}"
+      iex> JSaaS.MessageUtils.flip_message("a message")
+      "egassem a"
   """
-  @spec flipMsg(String.t) :: String.t
-  def flipMsg(text) do
+  @spec flip_message(String.t) :: String.t
+  def flip_message(text) do
     text |> String.reverse
   end
 

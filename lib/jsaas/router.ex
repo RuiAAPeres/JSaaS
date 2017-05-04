@@ -22,7 +22,7 @@ defmodule JSaaS.Router do
   end
 
   get "/flipMeJaden" do
-    response = getTweet("officialjaden", &JSaaS.MessageUtils.flipMsg/1)
+    response = getTweet("officialjaden", &JSaaS.MessageUtils.flip_message/1)
 
     send_resp(conn, 200, response)
   end
@@ -34,7 +34,7 @@ defmodule JSaaS.Router do
   end
 
   get "/flipMe:user" do
-    response = getTweet(user, &JSaaS.MessageUtils.flipMsg/1)
+    response = getTweet(user, &JSaaS.MessageUtils.flip_message/1)
 
     send_resp(conn, 200, response)
   end
