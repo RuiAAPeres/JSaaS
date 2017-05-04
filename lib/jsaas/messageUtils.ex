@@ -11,6 +11,14 @@ defmodule JSaaS.MessageUtils do
     text |> String.reverse
   end
 
+  @doc ~S"""
+  Returns itself
+
+  # Examples:
+      iex> JSaaS.MessageUtils.identity("a message")
+      "a message"
+  """
+  @spec identity(String.t) :: String.t
   def identity(text) do
     text
   end
