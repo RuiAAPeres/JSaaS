@@ -9,8 +9,7 @@ defmodule JSaaS.MessageUtils do
   """
   @spec flipMsg(String.t) :: String.t
   def flipMsg(text) do
-    text
-    |> String.reverse
+    text |> String.reverse
   end
 
   def identity(text) do
