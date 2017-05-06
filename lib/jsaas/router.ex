@@ -5,7 +5,7 @@ defmodule JSaaS.Router do
   plug :dispatch
 
   @spec getTweet(String.t, String.t :: String.t) :: String.t
-  def getTweet(account_name, transformation) do
+  defp getTweet(account_name, transformation) do
     options = [screen_name: account_name,
     count: 200,
     exclude_replies: true,
@@ -17,25 +17,21 @@ defmodule JSaaS.Router do
 
   get "/hitMeJaden" do
     response = getTweet("officialjaden", &JSaaS.MessageUtils.identity/1)
-
-    send_resp(conn, 200, response)
-  end
-
-  get "/flipMeJaden" do
-    response = getTweet("officialjaden", &JSaaS.MessageUtils.flip_message/1)
-
     send_resp(conn, 200, response)
   end
 
   get "/hitMe:user" do
     response = getTweet(user, &JSaaS.MessageUtils.identity/1)
+    send_resp(conn, 200, response)
+  end
 
+  get "/flipMeJaden" do
+    response = getTweet("officialjaden", &JSaaS.MessageUtils.flip_message/1)
     send_resp(conn, 200, response)
   end
 
   get "/flipMe:user" do
     response = getTweet(user, &JSaaS.MessageUtils.flip_message/1)
-
     send_resp(conn, 200, response)
   end
 
