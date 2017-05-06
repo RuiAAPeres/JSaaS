@@ -1,7 +1,7 @@
 defmodule JSaaS.Tweet do
 
   @derive [Poison.Encoder]
-  defstruct message: nil
+  defstruct text: nil
 
   def to_single_tweet(tweetsResponse, transformation) when is_list(tweetsResponse) do
     tweetsResponse
