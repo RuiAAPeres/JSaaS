@@ -20,7 +20,7 @@ defmodule JSaaS.Router do
     send_resp(conn, 200, response)
   end
 
-  get "/hitMe:user" do
+  get "/hitMe/:user" do
     response = getTweet(user, &JSaaS.MessageUtils.identity/1)
     send_resp(conn, 200, response)
   end
@@ -30,7 +30,7 @@ defmodule JSaaS.Router do
     send_resp(conn, 200, response)
   end
 
-  get "/flipMe:user" do
+  get "/flipMe/:user" do
     response = getTweet(user, &JSaaS.MessageUtils.flip_message/1)
     send_resp(conn, 200, response)
   end
