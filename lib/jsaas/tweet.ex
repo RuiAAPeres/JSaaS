@@ -14,6 +14,6 @@ defmodule JSaaS.Tweet do
   end
 
   def init_from_message(tweetMessage) do
-    %JSaaS.Tweet{message: tweetMessage}
+    %JSaaS.Tweet{text: tweetMessage}
   end
 end
